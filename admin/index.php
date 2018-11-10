@@ -169,6 +169,24 @@
                     </div>
                 </div>
             </div>
+            <div class="row clearfix">
+                <div class="col-lg-4 col-md-3 col-sm-6 col-xs-6">
+                    <div class="info-box bg-light-green hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">person</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">NUMBER OF STUDENTS</div>
+                            <?php
+                                $sql_count = "SELECT * FROM student";
+                                $result_count = mysqli_query($dblink, $sql_count);
+                            ?>
+                                <div class="number count-to" data-from="0" data-to="<?php echo mysqli_num_rows($result_count);?>" data-speed="1000" data-fresh-interval="20">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
         </div>
