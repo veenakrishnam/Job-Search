@@ -44,7 +44,7 @@
 
             $script =  '<script type="text/javascript">';
 
-            $script.= 'window.location.href = "jobs.php"';
+            $script.= 'window.location.href = "viewcompanyjob.php"';
 
             $script.= '</script>';
 

@@ -41,10 +41,10 @@
                     <div class="msg">Sign in to start your session</div>
                     <div class="input-group">
                         <span class="input-group-addon">
-                            <i class="material-icons">person</i>
+                            <i class="material-icons">email</i>
                         </span>
                         <div class="form-line">
-                            <input type="text" class="form-control" name="username" placeholder="Username" required autofocus>
+                            <input type="text" class="form-control" name="email" placeholder="Email" required autofocus>
                         </div>
                     </div>
                     <div class="input-group">
@@ -64,11 +64,16 @@
                             <button class="btn btn-block bg-pink waves-effect" type="submit">SIGN IN</button>
                         </div>
                     </div>
+                    <div class="row m-t-15 m-b--20">
+                        <div class="col-xs-6">
+                            <a href="signup.php">Register Now!</a>
+                        </div>
+                    </div>
                 </form>
                 <?php
-                    $username = false;
-                    if (isset($_POST['username'])) {
-                        $username = $_POST['username'];
+                    $email = false;
+                    if (isset($_POST['email'])) {
+                        $email = $_POST['email'];
                     }
 
                     $password = false;
@@ -77,8 +82,8 @@
                     }
 
                     $flag = 0;
-                    if ($username) {
-                        $sql = "SELECT * FROM Student WHERE username = '$username' AND password = '$password'";
+                    if ($email) {
+                        $sql = "SELECT * FROM Student WHERE student_email = '$email' AND password = '$password'";
                         $result = mysqli_query($dblink,$sql);
 
                         while ($data = mysqli_fetch_array($result)) {

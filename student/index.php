@@ -97,7 +97,7 @@
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>About</a></li>
+                            <li><a href="about.php"><i class="material-icons">person</i>About</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="signout.php"><i class="material-icons">input</i>Sign Out</a></li>
                         </ul>
@@ -116,10 +116,28 @@
                         </a>
                     </li>
                     <li>
-                        <a href="viewjob.php">
+                        <a href="jobs.php">
                             <i class="material-icons">business_center</i>
-                            <span> View Jobs</span>
+                            <span>Jobs</span>
                         </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">domain</i>
+                            <span>Company</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="company.php">
+                                    <span>View Company</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="viewcompanyjob.php">
+                                    <span>View Company Jobs</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
