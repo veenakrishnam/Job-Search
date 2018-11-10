@@ -121,6 +121,12 @@
                             <span>Jobs</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="registeredstudent.php">
+                            <i class="material-icons">assignment_turned_in</i>
+                            <span>Registered Students</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->
@@ -133,7 +139,7 @@
             <div class="block-header">
                 <h2>DASHBOARD</h2>
             </div>
-             <div class="row clearfix">
+            <div class="row clearfix">
                 <div class="col-lg-4 col-md-3 col-sm-6 col-xs-6">
                     <div class="info-box bg-light-green hover-expand-effect">
                         <div class="icon">
@@ -143,6 +149,24 @@
                             <div class="text">NUMBER OF JOB POSTS</div>
                             <?php
                                 $sql_count = "SELECT * FROM job  WHERE company_id = '$company_id' AND status = 'active'";
+                                $result_count = mysqli_query($dblink, $sql_count);
+                            ?>
+                                <div class="number count-to" data-from="0" data-to="<?php echo mysqli_num_rows($result_count);?>" data-speed="1000" data-fresh-interval="20">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-4 col-md-3 col-sm-6 col-xs-6">
+                    <div class="info-box bg-teal hover-expand-effect">
+                        <div class="icon">
+                            <i class="material-icons">assignment_turned_in</i>
+                        </div>
+                        <div class="content">
+                            <div class="text">NUMBER OF REGIS. STUDENTS</div>
+                            <?php
+                                $sql_count = "SELECT * FROM job_register WHERE company_id = '$company_id'";
                                 $result_count = mysqli_query($dblink, $sql_count);
                             ?>
                                 <div class="number count-to" data-from="0" data-to="<?php echo mysqli_num_rows($result_count);?>" data-speed="1000" data-fresh-interval="20">
