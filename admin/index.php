@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     include 'dbfile.php';
 
     session_start();
@@ -37,20 +37,20 @@
     <link href="css/themes/all-themes.css" rel="stylesheet" />
 </head>
 
-<body class="theme-red">
- <?php
-        if (!($_SESSION['admin_id'])) {
+<body background="images/animation-bg.jpg" class="theme-red">
+    <?php
+        if (!($_SESSION['company_id'])) {
             $script = "<script> window.location.href = 'signin.php' </script>";
             echo $script;
         }
 
-        $admin_id = $_SESSION['admin_id'];
+        $company_id = $_SESSION['company_id'];
 
-        $sql_admin = "SELECT * FROM Admin WHERE id = '$admin_id'";
-        $result_admin = mysqli_query($dblink, $sql_admin);
+        $sql_company = "SELECT * FROM company WHERE id = '$company_id'";
+        $result_company = mysqli_query($dblink, $sql_company);
 
-        while ($data_admin = mysqli_fetch_array($result_admin)) {
-            $admin_name = $data_admin['admin_name'];
+        while ($data_company = mysqli_fetch_array($result_company)) {
+            $company_name = $data_company['company_name'];
         }
     ?>
     <!-- Page Loader -->
@@ -77,7 +77,7 @@
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                `<a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="index.html">JOB SEARCH</a>
             </div>
@@ -90,10 +90,10 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="images/user1.jpg" width="48" height="48" alt="User" />
+                    <img src="images/user.png" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $admin_name ?></div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $company_name ?></div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
@@ -109,16 +109,22 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li class="active">
+                    <li class="active"> 
                         <a href="index.php">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
                     </li>
                     <li>
-                        <a href="company.php">
-                            <i class="material-icons">domain</i>
-                            <span> Company</span>
+                        <a href="jobs.php">
+                            <i class="material-icons">business_center</i>
+                            <span>Jobs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="registeredstudent.php">
+                            <i class="material-icons">assignment_turned_in</i>
+                            <span>Registered Students</span>
                         </a>
                     </li>
                 </ul>
@@ -135,32 +141,14 @@
             </div>
             <div class="row clearfix">
                 <div class="col-lg-4 col-md-3 col-sm-6 col-xs-6">
-                    <div class="info-box bg-pink hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">domain</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">NUMBER OF COMPANIES</div>
-                            <?php
-                                $sql_count = "SELECT * FROM company";
-                                $result_count = mysqli_query($dblink, $sql_count);
-                            ?>
-                                <div class="number count-to" data-from="0" data-to="<?php echo mysqli_num_rows($result_count);?>" data-speed="1000" data-fresh-interval="20">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row clearfix">
-                <div class="col-lg-4 col-md-3 col-sm-6 col-xs-6">
-                    <div class="info-box bg-cyan hover-expand-effect">
+                    <div class="info-box bg-light-green hover-expand-effect">
                         <div class="icon">
                             <i class="material-icons">business_center</i>
                         </div>
                         <div class="content">
                             <div class="text">NUMBER OF JOB POSTS</div>
                             <?php
-                                $sql_count = "SELECT * FROM job WHERE status = 'active'";
+                                $sql_count = "SELECT * FROM job  WHERE company_id = '$company_id' AND status = 'active'";
                                 $result_count = mysqli_query($dblink, $sql_count);
                             ?>
                                 <div class="number count-to" data-from="0" data-to="<?php echo mysqli_num_rows($result_count);?>" data-speed="1000" data-fresh-interval="20">
@@ -171,14 +159,14 @@
             </div>
             <div class="row clearfix">
                 <div class="col-lg-4 col-md-3 col-sm-6 col-xs-6">
-                    <div class="info-box bg-light-green hover-expand-effect">
+                    <div class="info-box bg-teal hover-expand-effect">
                         <div class="icon">
-                            <i class="material-icons">person</i>
+                            <i class="material-icons">assignment_turned_in</i>
                         </div>
                         <div class="content">
-                            <div class="text">NUMBER OF STUDENTS</div>
+                            <div class="text">NUMBER OF REGIS. STUDENTS</div>
                             <?php
-                                $sql_count = "SELECT * FROM student";
+                                $sql_count = "SELECT * FROM job_register WHERE company_id = '$company_id'";
                                 $result_count = mysqli_query($dblink, $sql_count);
                             ?>
                                 <div class="number count-to" data-from="0" data-to="<?php echo mysqli_num_rows($result_count);?>" data-speed="1000" data-fresh-interval="20">
@@ -187,8 +175,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </section>
 

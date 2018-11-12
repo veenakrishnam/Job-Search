@@ -2,7 +2,7 @@
 	session_start();
 
 
-	$_SESSION['admin_id'] = null;
+	$_SESSION['company_id'] = null;
 
 	session_destroy();
 

@@ -33,7 +33,7 @@
     <div class="login-box">
         <div class="logo">
             <a href="javascript:void(0);">Job Search</a>
-            <small>Admin Signin</small>
+            <small>Company Admin Signin</small>
         </div>
         <div class="card">
             <div class="body">
@@ -74,15 +74,15 @@
 
                     $flag = 0;
                     if ($username) {
-                        $sql = "SELECT * FROM Admin WHERE username = '$username' AND password = '$password'";
+                        $sql = "SELECT * FROM company WHERE username = '$username' AND password = '$password'";
                         $result = mysqli_query($dblink,$sql);
 
                         while ($data = mysqli_fetch_array($result)) {
-                            $admin_id = $data['id'];
+                            $company_id = $data['id'];
                             $flag = 1;
                         }
                         if ($flag == 1) {
-                            $_SESSION['admin_id'] = $admin_id;
+                            $_SESSION['company_id'] = $company_id;
                             $script = "<script> window.location.href = 'index.php' </script>";
                             echo $script;
                         }
