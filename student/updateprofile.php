@@ -162,7 +162,18 @@
                 while ($data_student = mysqli_fetch_array($result_student)) {
                     $student_name = $data_student['student_name'];
                     $student_email = $data_student['student_email'];
+                    $usn = $data_student['usn'];
                     $student_contact = $data_student['student_contact'];
+                    $gender = $data_student['gender'];
+                    $date_of_birth = $data_student['date_of_birth'];
+                    $student_address = $data_student['student_address'];
+                    $college_name = $data_student['college_name'];
+                    $university_name = $data_student['university_name'];
+                    $qualification = $data_student['qualification'];
+                    $branch = $data_student['branch'];
+                    $year_of_passing = $data_student['year_of_passing'];
+                    $percentage = $data_student['percentage'];
+                    $skills = $data_student['skills'];
                 }
             ?>
 
@@ -205,6 +216,23 @@
                                                         <td>
                                                             <div class="row clearfix demo-icon-container">
                                                                 <div class="demo-google-material-icon">
+                                                                    <i class="material-icons">bubble_chart</i>
+                                                                    <span class="icon-name">USN</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" class="form-control" name="usn" placeholder="USN" <?php echo "value=\"".$usn."\""; ?> required autofocus>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="row clearfix demo-icon-container">
+                                                                <div class="demo-google-material-icon">
                                                                     <i class="material-icons">call</i>
                                                                     <span class="icon-name">Contact</span>
                                                                 </div>
@@ -218,23 +246,7 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- #END# Basic Table -->
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="body">
-                                <!-- Basic Table -->
-                                <div class="row clearfix">
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                        <div class="body table-responsive">
-                                            <table class="table">
-                                                <tbody>
-                                                    <!--<tr>
+                                                    <tr>
                                                         <td>
                                                             <div class="row clearfix demo-icon-container">
                                                                 <div class="demo-google-material-icon">
@@ -244,10 +256,9 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="row clearfix demo-icon-container">
-                                                                <div class="demo-google-material-icon">
-                                                                    <i class="material-icons">blank</i>
-                                                                    <span class="icon-name"><?php echo $gender; ?></span>
+                                                            <div class="input-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" class="form-control" name="gender" placeholder="Gender" <?php echo "value=\"".$gender."\""; ?> required autofocus>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -262,10 +273,9 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="row clearfix demo-icon-container">
-                                                                <div class="demo-google-material-icon">
-                                                                    <i class="material-icons">blank</i>
-                                                                    <span class="icon-name"><?php echo $date_of_birth; ?></span>
+                                                            <div class="input-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" class="form-control" name="date_of_birth" placeholder="Date of Birth" <?php echo "value=\"".$date_of_birth."\""; ?> required autofocus>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -274,20 +284,159 @@
                                                         <td>
                                                             <div class="row clearfix demo-icon-container">
                                                                 <div class="demo-google-material-icon">
-                                                                    <i class="material-icons">bubble_chart</i>
-                                                                    <span class="icon-name">Blood Group</span>
+                                                                    <i class="material-icons">directions</i>
+                                                                    <span class="icon-name">Address</span>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="row clearfix demo-icon-container">
-                                                                <div class="demo-google-material-icon">
-                                                                    <i class="material-icons">blank</i>
-                                                                    <span class="icon-name"><?php echo $blood_group; ?></span>
+                                                            <div class="input-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" class="form-control" name="student_address" placeholder="Address" <?php echo "value=\"".$student_address."\""; ?> required autofocus>
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                    </tr>-->
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- #END# Basic Table -->
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="header bg-deep-orange">
+                                <h2>
+                                    Education Details
+                                </h2>
+                            </div>
+                            <div class="body">
+                                <!-- Basic Table -->
+                                <div class="row clearfix">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="body table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="row clearfix demo-icon-container">
+                                                                <div class="demo-google-material-icon">
+                                                                    <i class="material-icons">domain</i>
+                                                                    <span class="icon-name">College name</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" class="form-control" name="college_name" placeholder="College name" <?php echo "value=\"".$college_name."\""; ?> required autofocus>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="row clearfix demo-icon-container">
+                                                                <div class="demo-google-material-location_city">
+                                                                    <i class="material-icons">location_city</i>
+                                                                    <span class="icon-name">University Name</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" class="form-control" name="university_name" placeholder="University Name" <?php echo "value=\"".$university_name."\""; ?> required autofocus>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="row clearfix demo-icon-container">
+                                                                <div class="demo-google-material-icon">
+                                                                    <i class="material-icons">school</i>
+                                                                    <span class="icon-name">Qualification</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" class="form-control" name="qualification" placeholder="Qualification" <?php echo "value=\"".$qualification."\""; ?> required autofocus>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="row clearfix demo-icon-container">
+                                                                <div class="demo-google-material-icon">
+                                                                    <i class="material-icons">group_work</i>
+                                                                    <span class="icon-name">Branch</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" class="form-control" name="branch" placeholder="Branch" <?php echo "value=\"".$branch."\""; ?> required autofocus>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="row clearfix demo-icon-container">
+                                                                <div class="demo-google-material-icon">
+                                                                    <i class="material-icons">event_note</i>
+                                                                    <span class="icon-name">Year of Passing</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" class="form-control" name="year_of_passing" placeholder="Year of Passing" <?php echo "value=\"".$year_of_passing."\""; ?> required autofocus>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="row clearfix demo-icon-container">
+                                                                <div class="demo-google-material-icon">
+                                                                    <i class="material-icons">show_chart</i>
+                                                                    <span class="icon-name">Percentage</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" class="form-control" name="percentage" placeholder="Percentage" <?php echo "value=\"".$percentage."\""; ?> required autofocus>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="row clearfix demo-icon-container">
+                                                                <div class="demo-google-material-icon">
+                                                                    <i class="material-icons">stars</i>
+                                                                    <span class="icon-name">Skills</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" class="form-control" name="skills" placeholder="Skills" <?php echo "value=\"".$skills."\""; ?> required autofocus>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -310,21 +459,78 @@
                                 $student_name = $_POST['student_name'];
                             }
 
+                            $usn = false;
+                            if (isset($_POST['usn'])) {
+                                $usn = $_POST['usn'];
+                            }
+
                             $student_contact = false;
                             if (isset($_POST['student_contact'])) {
                                 $student_contact = $_POST['student_contact'];
                             }
 
+                            $gender = false;
+                            if (isset($_POST['gender'])) {
+                                $gender = $_POST['gender'];
+                            }
+
+                            $date_of_birth = false;
+                            if (isset($_POST['date_of_birth'])) {
+                                $date_of_birth = $_POST['date_of_birth'];
+                            }
+
+                            $student_address = false;
+                            if (isset($_POST['student_address'])) {
+                                $student_address = $_POST['student_address'];
+                            }
+
+                            $college_name = false;
+                            if (isset($_POST['college_name'])) {
+                                $college_name = $_POST['college_name'];
+                            }
+
+                            $university_name = false;
+                            if (isset($_POST['university_name'])) {
+                                $university_name = $_POST['university_name'];
+                            }
+
+                            $qualification = false;
+                            if (isset($_POST['qualification'])) {
+                                $qualification = $_POST['qualification'];
+                            }
+
+                            $branch = false;
+                            if (isset($_POST['branch'])) {
+                                $branch = $_POST['branch'];
+                            }
+
+                            $year_of_passing = false;
+                            if (isset($_POST['year_of_passing'])) {
+                                $year_of_passing = $_POST['year_of_passing'];
+                            }
+
+                            $percentage = false;
+                            if (isset($_POST['percentage'])) {
+                                $percentage = $_POST['percentage'];
+                            }
+
+                            $skills = false;
+                            if (isset($_POST['skills'])) {
+                                $skills = $_POST['skills'];
+                            }
+
                             if ($student_name) {
-                                $sql_update = "UPDATE student SET student_name = '$student_name', student_contact = '$student_contact' WHERE id = '$student_id'";
+                                $sql_update = "UPDATE student SET student_name = '$student_name', usn = '$usn', student_contact = '$student_contact', gender = '$gender', date_of_birth = '$date_of_birth', student_address = '$student_address', college_name = '$college_name', university_name = '$university_name', qualification = '$qualification', branch = '$branch', year_of_passing = '$year_of_passing', percentage = '$percentage', skills = '$skills' WHERE id = '$student_id'";
                                 $result_update = mysqli_query($dblink, $sql_update);
                                 echo $sql_update;
 
                                 if ($result_update) {
+                                    $_SESSION['success_udpate_profile'] = "Yes";
                                     $script = "<script> window.location.href = 'about.php' </script>";
                                     echo $script;
                                 }
                                 else{
+                                    $_SESSION['unsuccess_udpate_profile'] = "Yes";
                                     $script = "<script> window.location.href = 'updateprofile.php' </script>";
                                     echo $script;
                                 }
