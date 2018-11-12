@@ -37,7 +37,7 @@
     <link href="css/themes/all-themes.css" rel="stylesheet" />
 </head>
 
-<body class="theme-red">
+<body background="images/animation-bg.jpg" class="theme-red">
     <?php
         if (!($_SESSION['company_id'])) {
             $script = "<script> window.location.href = 'signin.php' </script>";

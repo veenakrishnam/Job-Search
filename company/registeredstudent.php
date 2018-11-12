@@ -226,6 +226,9 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Contact</th>
+                                            <th>College Name</th>
+                                            <th>Percentage</th>
+                                            <th>Skills</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -243,12 +246,18 @@
                                                     $student_name = $data_student['student_name'];
                                                     $studen_email = $data_student['student_email'];
                                                     $student_contact = $data_student['student_contact'];
+                                                    $college_name = $data_student['college_name'];
+                                                    $percentage = $data_student['percentage'];
+                                                    $skills = $data_student['skills'];
                                                 }
                                         ?>
                                         <tr>
                                             <td><?php echo $student_name; ?></td>
                                             <td><?php echo $studen_email; ?></td>
                                             <td><?php echo $student_contact; ?></td>
+                                            <td><?php echo $college_name; ?></td>
+                                            <td><?php echo $percentage; ?></td>
+                                            <td><?php echo $skills; ?></td>
                                         </tr>
                                         <?php
                                             }
