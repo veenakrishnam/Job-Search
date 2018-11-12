@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2018 at 05:51 PM
+-- Generation Time: Nov 12, 2018 at 08:43 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -142,7 +142,18 @@ CREATE TABLE IF NOT EXISTS `student` (
   `password` varchar(50) NOT NULL,
   `student_name` varchar(50) NOT NULL,
   `student_email` varchar(200) NOT NULL,
+  `usn` varchar(20) NOT NULL,
   `student_contact` varchar(50) NOT NULL,
+  `gender` varchar(20) NOT NULL,
+  `date_of_birth` varchar(50) NOT NULL,
+  `student_address` varchar(300) NOT NULL,
+  `college_name` varchar(200) NOT NULL,
+  `university_name` varchar(200) NOT NULL,
+  `qualification` varchar(100) NOT NULL,
+  `branch` varchar(100) NOT NULL,
+  `year_of_passing` varchar(20) NOT NULL,
+  `percentage` varchar(20) NOT NULL,
+  `skills` varchar(200) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `student_email` (`student_email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
@@ -151,9 +162,9 @@ CREATE TABLE IF NOT EXISTS `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`id`, `password`, `student_name`, `student_email`, `student_contact`) VALUES
-(1, 'madhu', 'Madhu', 'madhu@gmail.com', ''),
-(2, 'veena123', 'Veena Krishna', 'veena@gmail.com', '123456789');
+INSERT INTO `student` (`id`, `password`, `student_name`, `student_email`, `usn`, `student_contact`, `gender`, `date_of_birth`, `student_address`, `college_name`, `university_name`, `qualification`, `branch`, `year_of_passing`, `percentage`, `skills`) VALUES
+(1, 'madhu', 'Madhu', 'madhu@gmail.com', '', '', '', '', '', '', '', '', '', '', '', ''),
+(2, 'veena123', 'Veena Krishna', 'veena@gmail.com', '1VE15IS061', '123456789', 'Female', '02 - 04 1998', 'Bagalur', 'SVCE', 'VTU', 'BE', 'ISE', '2019', '70', 'C, Java');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
