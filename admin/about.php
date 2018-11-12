@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Company</title>
+    <title>Job Search</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -37,7 +37,7 @@
     <link href="css/themes/all-themes.css" rel="stylesheet" />
 </head>
 
-<body class="theme-red">
+<body background="images/animation-bg.jpg" class="theme-red">
  <?php
         if (!($_SESSION['admin_id'])) {
             $script = "<script> window.location.href = 'signin.php' </script>";
@@ -109,19 +109,19 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li>
+                    <li class="active">
                         <a href="index.php">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="company.php">
                             <i class="material-icons">domain</i>
                             <span> Company</span>
                         </a>
                     </li>
-                   
+                    
                 </ul>
             </div>
             <!-- #Menu -->
@@ -131,83 +131,10 @@
 
     <section class="content">
         <div class="container-fluid">
-            <!-- Striped Rows -->
-            <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header">
-                            <h2>
-                                Company
-                            </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="add_company.php">Add Company</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="body table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>SL NO.</th>
-                                        <th>COMPANY NAME</th>
-                                        <th>WEBSITE</th>
-                                        <th>CITY</th>
-                                        <th>COUNTRY</th>
-                                        <th>COMPANY TYPE</th>
-                                        <th>CONTACT PERSON</th>
-                                        <th>CONTACT NUMBER</th>
-                                        <th>EMAIL ID</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                        $sql_company = "SELECT * FROM company WHERE 1";
-                                        $result_company = mysqli_query($dblink, $sql_company);
-
-                                        $count = 1;
-                                        while ($data_company = mysqli_fetch_array($result_company)) {
-                                            $company_name = $data_company['company_name'];
-                                            $website = $data_company['website'];
-                                            $city = $data_company['city'];
-                                            $country = $data_company['country'];
-                                            $companytype = $data_company['companytype'];
-                                            $firstname=$data_company['firstname'];
-                                            $lastname=$data_company['lastname'];
-                                            $number=$data_company['number'];
-                                            $email=$data_company['email'];
-                                           
-                                    ?>
-                                    <tr>
-                                        <th scope="row"><?php echo $count; ?></th>
-                                        <td><?php echo $company_name; ?></td>
-                                        <td><?php echo $website; ?></td>
-                                        <td><?php echo $city; ?></td>
-                                        <td><?php echo $country; ?></td>
-                                        <td><?php echo $companytype; ?></td>
-                                        <td><?php echo $firstname." ".$lastname; ?></td>
-                                        <td><?php echo $number; ?></td>
-                                        <td><?php echo $email; ?></td>
-
-
-                                        
-                                    </tr>
-                                    <?php
-                                            $count = $count + 1;
-                                        }
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+            <div class="block-header">
+                <h2>DASHBOARD</h2>
             </div>
-            <!-- #END# Striped Rows -->
+
 
         </div>
     </section>

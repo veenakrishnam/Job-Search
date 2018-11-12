@@ -122,13 +122,14 @@
                             <span>Home</span>
                         </a>
                     <li>
-                    <li class="active">
+                    <li class="list">
                         <a href="company.php">
                             <i class="material-icons">domain</i>
                             <span>Company</span>
                         </a>
                     </li>
-                </ul>
+                   
+               </ul>
             </div>
             <!-- #Menu -->
         </aside>

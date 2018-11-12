@@ -29,14 +29,14 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body class="login-page">
+<body class="login-page" background="images/5.jpg" style="background-position: center; background-repeat:no-repeat; ">
     <div class="login-box">
         <div class="logo">
             <a href="javascript:void(0);">Job Search</a>
             <small>Admin Signin</small>
         </div>
         <div class="card">
-            <div class="body">
+            <div class="body" >
                 <form id="sign_in" method="POST">
                     <div class="msg">Sign in to start your session</div>
                     <div class="input-group">
