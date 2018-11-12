@@ -29,7 +29,7 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body class="signup-page">
+<body class="signup-page"background="images/5.jpg" style="background-position: center; background-repeat:no-repeat; ">
     <div class="signup-box">
         <div class="logo">
             <a href="javascript:void(0);">Job Search</a>

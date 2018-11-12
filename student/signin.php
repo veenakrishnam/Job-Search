@@ -29,7 +29,7 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
-<body class="login-page">
+<body class="login-page"background="images/5.jpg" style="background-position: center; background-repeat:no-repeat; ">
     <div class="login-box">
         <div class="logo">
             <a href="javascript:void(0);">Job Search</a>
