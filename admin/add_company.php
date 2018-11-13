@@ -1,6 +1,5 @@
 <?php
     include 'dbfile.php';
-
     session_start();
 ?>
 <!DOCTYPE html>
@@ -50,12 +49,9 @@
             $script = "<script> window.location.href = 'signin.php' </script>";
             echo $script;
         }
-
         $admin_id = $_SESSION['admin_id'];
-
         $sql_admin = "SELECT * FROM Admin WHERE id = '$admin_id'";
         $result_admin = mysqli_query($dblink, $sql_admin);
-
         while ($data_admin = mysqli_fetch_array($result_admin)) {
             $admin_name = $data_admin['admin_name'];
         }
@@ -105,7 +101,7 @@
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>About</a></li>
+                            <li><a href="about.php"><i class="material-icons">person</i>About</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="signout.php"><i class="material-icons">input</i>Sign Out</a></li>
                         </ul>
@@ -122,14 +118,13 @@
                             <span>Home</span>
                         </a>
                     <li>
-                    <li class="list">
+                    <li class="active">
                         <a href="company.php">
                             <i class="material-icons">domain</i>
                             <span>Company</span>
                         </a>
                     </li>
-                   
-               </ul>
+                </ul>
             </div>
             <!-- #Menu -->
         </aside>
@@ -298,72 +293,58 @@
                                     if (isset($_POST['company_name'])) {
                                         $company_name = $_POST['company_name'];
                                     }
-
                                      $website = false;
                                      if (isset($_POST['website'])) {
                                     $website = $_POST['website'];
                                      }
-
                                      $city = false;
                                      if (isset($_POST['city'])) {
                                     $city = $_POST['city'];
                                      }
-
                                      $state = false;
                                      if (isset($_POST['state'])) {
                                     $state = $_POST['state'];
                                      }
-
                                      $postal_code = false;
                                      if (isset($_POST['postal_code'])) {
                                     $code = $_POST['postal_code'];
                                      }
-
                                      $country = false;
                                      if (isset($_POST['country'])) {
                                     $country = $_POST['country'];
                                      }
-
                                      $companytype = false;
                                      if (isset($_POST['companytype'])) {
                                     $companytype = $_POST['companytype'];
                                      }
-
                                      $firstname = false;
                                      if (isset($_POST['firstname'])) {
                                     $firstname = $_POST['firstname'];
                                      }
-
                                      $lastname = false;
                                      if (isset($_POST['lastname'])) {
                                     $lastname = $_POST['lastname'];
                                      }
-
                                      $number = false;
                                      if (isset($_POST['number'])) {
                                     $number = $_POST['number'];
                                      }
-
                                       $email = false;
                                      if (isset($_POST['email'])) {
                                     $email = $_POST['email'];
                                      }
-
                                     $username = false;
                                     if (isset($_POST['username'])) {
                                         $username = $_POST['username'];
                                     }
-
                                     $password = false;
                                     if (isset($_POST['password'])) {
                                         $password = $_POST['password'];
                                     }
-
                                      if ($company_name != '') {
                                         if (isset($_POST['add_company'])) {
                                             $sql_add_company = "INSERT INTO company (company_name , website , city , state , postal_code , country , companytype , firstname , lastname , number , email , username, password) VALUES ('$company_name' , '$website' , '$city' , '$state' , '$postal_code' , '$country' , '$companytype' , '$firstname' , '$lastname' , '$number' , '$email' , '$username' , '$password')";
                                             $resut_add_company = mysqli_query($dblink, $sql_add_company);
-
                                             if ($resut_add_company) {
                                                 $script = "<script> window.location.href = 'company.php' </script>";
                                                //echo $script;

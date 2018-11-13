@@ -131,27 +131,12 @@
 
     <section class="content">
         <div class="container-fluid">
-            <?php
-                if (isset($_SESSION['success_udpate_profile'])) {
-                    if ($_SESSION['success_udpate_profile'] == "Yes") {
-                        ?>
-                        <script type="text/javascript">
-                            window.onload = function() {
-                                document.getElementById("mybutton").click();
-                            }
-                        </script>
-                        <div class="row clearfix jsdemo-notification-button">
-                            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
-                                <button type="button" id="mybutton" style="display: none;" data-text="Profile updated successfully" class="btn bg-deep-orange btn-block waves-effect" data-placement-from="bottom" data-placement-align="left" data-animate-enter="animated zoomInLeft" data-animate-exit="animated zoomOutLeft" data-color-name="bg-deep-orange">FADE IN/OUT DOWN</button>
-                            </div>
-                        </div>
-                        <?php
-                    }
-                    $_SESSION['success_udpate_profile'] = "false";
-                }
-            ?>
             <div class="block-header">
                 <h2>ABOUT</h2>
+                <ol class="breadcrumb breadcrumb-col-teal">
+                    <li><a href="about.php"><i class="material-icons">person</i> About</a></li>
+                    <li class="active"><i class="material-icons">library_books</i> Update Profile</li>
+                </ol>
             </div>
             <?php
                 $sql_admin = "SELECT * FROM admin WHERE id = '$admin_id'";
@@ -167,73 +152,98 @@
             <!-- Basic Example -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="card">
-                        <div class="header bg-orange">
-                            <h2>
-                                Basic Details
-                            </h2>
-                            <ul class="header-dropdown m-r--5">
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i class="material-icons">more_vert</i>
-                                    </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="updateprofile.php">Update Profile</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="body">
-                            <!-- Basic Table -->
-                            <div class="row clearfix">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <div class="body table-responsive">
-                                        <table class="table">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="row clearfix demo-icon-container">
-                                                            <div class="demo-google-material-icon">
-                                                                <i class="material-icons">event_seat</i>
-                                                                <span class="icon-name">Username</span>
+                    <form method="POST">
+                        <div class="card">
+                            <div class="header bg-orange">
+                                <h2>
+                                    Basic Details
+                                </h2>
+                            </div>
+                            <div class="body">
+                                <!-- Basic Table -->
+                                <div class="row clearfix">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="body table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="row clearfix demo-icon-container">
+                                                                <div class="demo-google-material-icon">
+                                                                    <i class="material-icons">event_seat</i>
+                                                                    <span class="icon-name">Username</span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="row clearfix demo-icon-container">
-                                                            <div class="demo-google-material-icon">
-                                                                <i class="material-icons">blank</i>
-                                                                <span class="icon-name"><?php echo $username; ?></span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" class="form-control" name="username" placeholder="Username" <?php echo "value=\"".$username."\""; ?> required autofocus>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="row clearfix demo-icon-container">
-                                                            <div class="demo-google-material-icon">
-                                                                <i class="material-icons">person</i>
-                                                                <span class="icon-name">Admin name</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="row clearfix demo-icon-container">
+                                                                <div class="demo-google-material-icon">
+                                                                    <i class="material-icons">person</i>
+                                                                    <span class="icon-name">Admin name</span>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="row clearfix demo-icon-container">
-                                                            <div class="demo-google-material-icon">
-                                                                <i class="material-icons">blank</i>
-                                                                <span class="icon-name"><?php echo $admin_name; ?></span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <div class="form-line">
+                                                                    <input type="text" class="form-control" name="admin_name" placeholder="Admin name" <?php echo "value=\"".$admin_name."\""; ?> required autofocus>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
+                                <!-- #END# Basic Table -->
                             </div>
-                            <!-- #END# Basic Table -->
                         </div>
-                    </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-4">
+                                <button name="update_profile" class="btn btn-primary waves-effect" type="submit">UPDATE</button>
+                            </div>
+                        </div>
+                        <br><br>
+                    </form>
+                    <?php
+                        if (isset($_POST['update_profile'])) {
+                            $username = false;
+                            if (isset($_POST['username'])) {
+                                $username = $_POST['username'];
+                            }
+
+                            $admin_name = false;
+                            if (isset($_POST['admin_name'])) {
+                                $admin_name = $_POST['admin_name'];
+                            }
+
+                            if ($username) {
+                                $sql_update = "UPDATE admin SET username = '$username', admin_name = '$admin_name' WHERE id = '$admin_id'";
+                                $result_update = mysqli_query($dblink, $sql_update);
+
+                                if ($result_update) {
+                                    $_SESSION['success_udpate_profile'] = "Yes";
+                                    $script = "<script> window.location.href = 'about.php' </script>";
+                                    echo $script;
+                                }
+                                else{
+                                    $_SESSION['unsuccess_udpate_profile'] = "Yes";
+                                    $script = "<script> window.location.href = 'updateprofile.php' </script>";
+                                    echo $script;
+                                }
+                            }
+                        }
+                    ?>
                 </div>
             </div>
             <!-- #END# Basic Example -->
@@ -242,9 +252,6 @@
 
     <!-- Jquery Core Js -->
     <script src="plugins/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Notify Plugin Js -->
-    <script src="plugins/bootstrap-notify/bootstrap-notify.js"></script>
 
     <!-- Bootstrap Core Js -->
     <script src="plugins/bootstrap/js/bootstrap.js"></script>
@@ -278,13 +285,8 @@
     <!-- Sparkline Chart Plugin Js -->
     <script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
 
-    <!-- SweetAlert Plugin Js -->
-    <script src="plugins/sweetalert/sweetalert.min.js"></script>
-
     <!-- Custom Js -->
     <script src="js/admin.js"></script>
-    <script src="js/pages/ui/dialogs.js"></script>
-    <script src="js/pages/ui/notifications.js"></script>
     <script src="js/pages/index.js"></script>
 
     <!-- Demo Js -->
