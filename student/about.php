@@ -280,7 +280,7 @@
                                                     <td>
                                                         <div class="row clearfix demo-icon-container">
                                                             <div class="demo-google-material-icon">
-                                                                <i class="material-icons">date_range</i>
+                                                                <i class="material-icons">cake</i>
                                                                 <span class="icon-name">Date of Birth</span>
                                                             </div>
                                                         </div>

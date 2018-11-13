@@ -267,7 +267,7 @@
                                                         <td>
                                                             <div class="row clearfix demo-icon-container">
                                                                 <div class="demo-google-material-icon">
-                                                                    <i class="material-icons">date_range</i>
+                                                                    <i class="material-icons">cake</i>
                                                                     <span class="icon-name">Date of Birth</span>
                                                                 </div>
                                                             </div>
@@ -522,7 +522,6 @@
                             if ($student_name) {
                                 $sql_update = "UPDATE student SET student_name = '$student_name', usn = '$usn', student_contact = '$student_contact', gender = '$gender', date_of_birth = '$date_of_birth', student_address = '$student_address', college_name = '$college_name', university_name = '$university_name', qualification = '$qualification', branch = '$branch', year_of_passing = '$year_of_passing', percentage = '$percentage', skills = '$skills' WHERE id = '$student_id'";
                                 $result_update = mysqli_query($dblink, $sql_update);
-                                echo $sql_update;
 
                                 if ($result_update) {
                                     $_SESSION['success_udpate_profile'] = "Yes";
