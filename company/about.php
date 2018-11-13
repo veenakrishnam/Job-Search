@@ -112,13 +112,13 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li>
+                    <li class="active">
                         <a href="index.php">
                             <i class="material-icons">home</i>
                             <span>Home</span>
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="jobs.php">
                             <i class="material-icons">business_center</i>
                             <span>Jobs</span>
@@ -145,107 +145,275 @@
 
     <section class="content">
         <div class="container-fluid">
-        <!-- Tabs With Icon Title -->
+            <?php
+                if (isset($_SESSION['success_udpate_profile'])) {
+                    if ($_SESSION['success_udpate_profile'] == "Yes") {
+                        ?>
+                        <script type="text/javascript">
+                            window.onload = function() {
+                                document.getElementById("mybutton").click();
+                            }
+                        </script>
+                        <div class="row clearfix jsdemo-notification-button">
+                            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2">
+                                <button type="button" id="mybutton" style="display: none;" data-text="Profile updated successfully" class="btn bg-deep-orange btn-block waves-effect" data-placement-from="bottom" data-placement-align="left" data-animate-enter="animated zoomInLeft" data-animate-exit="animated zoomOutLeft" data-color-name="bg-deep-orange">FADE IN/OUT DOWN</button>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    $_SESSION['success_udpate_profile'] = "false";
+                }
+            ?>
+            <div class="block-header">
+                <h2>ABOUT</h2>
+            </div>
+            <?php
+                $sql_company = "SELECT * FROM company WHERE id = '$company_id'";
+                $result_company = mysqli_query($dblink,$sql_company);
+
+                while ($data_company = mysqli_fetch_array($result_company)) {
+                    $company_name = $data_company['company_name'];
+                    $website = $data_company['website'];
+                    $city = $data_company['city'];
+                    $state = $data_company['state'];
+                    $postal_code = $data_company['postal_code'];
+                    $country = $data_company['country'];
+                    $companytype = $data_company['companytype'];
+                    $firstname = $data_company['firstname'];
+                    $lastname = $data_company['lastname'];
+                    $number = $data_company['number'];
+                    $email = $data_company['email'];
+                }
+            ?>
+
+            <!-- Starts here -->
+            <!-- Basic Example -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="header">
+                        <div class="header bg-orange">
                             <h2>
-                                JOBS
+                                <?php echo $company_name ?><small><?php echo $website; ?></small>
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
-                                    <a href="add_job.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         <i class="material-icons">more_vert</i>
                                     </a>
                                     <ul class="dropdown-menu pull-right">
-                                        <li><a href="add_job.php">Add Job</a></li>
+                                        <li><a href="updateprofile.php">Update Profile</a></li>
                                     </ul>
                                 </li>
                             </ul>
                         </div>
                         <div class="body">
-                            <!-- Tab panes -->
-                            
-                                <div role="tabpanel" class="tab-pane fade" >
-                                    <p>
-                                        <?php
-                                        $sql_company = "SELECT * FROM company WHERE 1";
-                                        $result_company = mysqli_query($dblink, $sql_company);
-
-                                        $count = 1;
-                                        while ($data_company = mysqli_fetch_array($result_company)) {
-                                            $company_name = $data_company['company_name'];
-                                            $website = $data_company['website'];
-                                            $city = $data_company['city'];
-                                            $country = $data_company['country'];
-                                            $companytype = $data_company['companytype'];
-                                            $firstname=$data_company['firstname'];
-                                            $lastname=$data_company['lastname'];
-                                            $number=$data_company['number'];
-                                            $email=$data_company['email'];
-                                           ?>
-                                        <!-- Basic Example -->
-                                       <div class="row clearfix js-sweetalert">
-                                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                                <div class="card">
-                                                    <div class="header bg-blue-grey">
-                                                        <h2>
-                                                            <?php echo $title; ?> <small><?php echo $date_time; ?></small>
-                                                        </h2>
-                                                        <ul class="header-dropdown m-r-0">
-                                                            <li>
-                                                                <a data-type="show-message" data-title="Are you sure you want to delete ?" data-confirm-button-text="Yes, delete it" data-confirm-button-color="DD6B55" data-confirm-text="The record has been deleted."<?php echo "data-url=\"deletejob.php?id=".$job_id."\""?> href="javascript:void(0);">
-                                                                    <i class="material-icons"> &nbsp;delete</i>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="body">
-                                                        <!-- Basic Table -->
-                                                        <div class="row clearfix">
-                                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                                <div class="body table-responsive">
-                                                                    <table class="table">
-                                                                        <tbody>
-                                                                             <tr>
-                                                                                <th scope="row"><?php echo $count; ?></th>
-                                                                                <td><?php echo $company_name; ?></td>
-                                                                                <td><?php echo $website; ?></td>
-                                                                                <td><?php echo $city; ?></td>
-                                                                                <td><?php echo $country; ?></td>
-                                                                                <td><?php echo $companytype; ?></td>
-                                                                                <td><?php echo $firstname." ".$lastname; ?></td>
-                                                                                <td><?php echo $number; ?></td>
-                                                                                <td><?php echo $email; ?></td>
-                                                                            </tr>       
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
+                            <!-- Basic Table -->
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="body table-responsive">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row clearfix demo-icon-container">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">location_city</i>
+                                                                <span class="icon-name">City</span>
                                                             </div>
                                                         </div>
-                                                        <!-- #END# Basic Table -->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- #END# Basic Example -->
-                                        <?php
-                                            $count = $count + 1;
-                                        }
-                                    ?>
-                                    </p>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row clearfix demo-icon-container">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">blank</i>
+                                                                <span class="icon-name"><?php echo $city; ?></span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row clearfix demo-icon-container">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">terrain</i>
+                                                                <span class="icon-name">State</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row clearfix demo-icon-container">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">blank</i>
+                                                                <span class="icon-name"><?php echo $state; ?></span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row clearfix demo-icon-container">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">markunread_mailbox</i>
+                                                                <span class="icon-name">Postal code</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row clearfix demo-icon-container">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">blank</i>
+                                                                <span class="icon-name"><?php echo $postal_code; ?></span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row clearfix demo-icon-container">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">public</i>
+                                                                <span class="icon-name">Country</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row clearfix demo-icon-container">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">blank</i>
+                                                                <span class="icon-name"><?php echo $country; ?></span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row clearfix demo-icon-container">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">bubble_chart</i>
+                                                                <span class="icon-name">Company type</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row clearfix demo-icon-container">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">blank</i>
+                                                                <span class="icon-name"><?php echo $companytype; ?></span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- #END# Basic Table -->
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="header bg-deep-orange">
+                            <h2>
+                                Contact Person
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <!-- Basic Table -->
+                            <div class="row clearfix">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="body table-responsive">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row clearfix demo-icon-container">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">person</i>
+                                                                <span class="icon-name">First name</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row clearfix demo-icon-container">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">blank</i>
+                                                                <span class="icon-name"><?php echo $firstname; ?></span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row clearfix demo-icon-container">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">person</i>
+                                                                <span class="icon-name">Last name</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row clearfix demo-icon-container">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">blank</i>
+                                                                <span class="icon-name"><?php echo $lastname; ?></span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row clearfix demo-icon-container">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">call</i>
+                                                                <span class="icon-name">Number</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row clearfix demo-icon-container">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">blank</i>
+                                                                <span class="icon-name"><?php echo $number; ?></span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="row clearfix demo-icon-container">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">email</i>
+                                                                <span class="icon-name">Email</span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="row clearfix demo-icon-container">
+                                                            <div class="demo-google-material-icon">
+                                                                <i class="material-icons">blank</i>
+                                                                <span class="icon-name"><?php echo $email; ?></span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- #END# Basic Table -->
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- #END# Tabs With Icon Title -->
+            <!-- #END# Basic Example -->
         </div>
     </section>
-     <!-- Jquery Core Js -->
+    <!-- Jquery Core Js -->
     <script src="plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Notify Plugin Js -->
+    <script src="plugins/bootstrap-notify/bootstrap-notify.js"></script>
 
     <!-- Bootstrap Core Js -->
     <script src="plugins/bootstrap/js/bootstrap.js"></script>
@@ -256,11 +424,28 @@
     <!-- Slimscroll Plugin Js -->
     <script src="plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
-    <!-- Bootstrap Notify Plugin Js -->
-    <script src="plugins/bootstrap-notify/bootstrap-notify.js"></script>
-
     <!-- Waves Effect Plugin Js -->
     <script src="plugins/node-waves/waves.js"></script>
+
+    <!-- Jquery CountTo Plugin Js -->
+    <script src="plugins/jquery-countto/jquery.countTo.js"></script>
+
+    <!-- Morris Plugin Js -->
+    <script src="plugins/raphael/raphael.min.js"></script>
+    <script src="plugins/morrisjs/morris.js"></script>
+
+    <!-- ChartJs -->
+    <script src="plugins/chartjs/Chart.bundle.js"></script>
+
+    <!-- Flot Charts Plugin Js -->
+    <script src="plugins/flot-charts/jquery.flot.js"></script>
+    <script src="plugins/flot-charts/jquery.flot.resize.js"></script>
+    <script src="plugins/flot-charts/jquery.flot.pie.js"></script>
+    <script src="plugins/flot-charts/jquery.flot.categories.js"></script>
+    <script src="plugins/flot-charts/jquery.flot.time.js"></script>
+
+    <!-- Sparkline Chart Plugin Js -->
+    <script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
 
     <!-- SweetAlert Plugin Js -->
     <script src="plugins/sweetalert/sweetalert.min.js"></script>
@@ -268,6 +453,8 @@
     <!-- Custom Js -->
     <script src="js/admin.js"></script>
     <script src="js/pages/ui/dialogs.js"></script>
+    <script src="js/pages/ui/notifications.js"></script>
+    <script src="js/pages/index.js"></script>
 
     <!-- Demo Js -->
     <script src="js/demo.js"></script>
